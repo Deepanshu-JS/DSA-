@@ -59,7 +59,7 @@ using namespace std;
 // }
 
 
-
+ 
 // class Solution{
 //     public:
 //     void segregateElements(int arr[],int n)
