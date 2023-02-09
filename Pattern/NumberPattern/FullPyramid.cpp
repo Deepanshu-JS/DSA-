@@ -16,12 +16,12 @@ int main()
         for (int col = 0; col < row + 1; col++)
         {
             cout << start<<"";
-            start++;
+            start++; // counting +1 each time
         }
         //for third reverse triangle
         int startt = 2*row;
         for(int col=0; col<row;col++){
-            cout<<startt;
+            cout<<startt<<"";
             startt=startt-1; //reverse counting
         }
         cout << endl;
