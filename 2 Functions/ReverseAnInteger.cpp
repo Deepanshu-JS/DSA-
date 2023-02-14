@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int Reverse(int n)
+void Reverse(int n)
 {
 
     while(n!= 0)
