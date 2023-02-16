@@ -1,12 +1,13 @@
 #include <iostream>
 using namespace std;
-void hello(){
-    int a = 5;
-    int b= 6;
-    cout<<a+b;
-}
+
 
 int main()
 {
-   hello();
+   
+   float x =0.1;
+   if( x == 0.1f)
+   printf("A");
+   else
+   printf("B");
 }

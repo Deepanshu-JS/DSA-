@@ -8,7 +8,7 @@ int main(){
     arr[i]=1;
    }
    for(int i=0;i<4;i++){
-    cout<<arr[i]<<" ";     //memset
+    cout<<arr[i]<<" ";     //memset can use but memset is for string
    }
 }
 
