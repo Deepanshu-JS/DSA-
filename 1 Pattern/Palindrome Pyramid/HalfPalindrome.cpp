@@ -36,7 +36,7 @@ int main()
 //             cout << start<<"";
 //             start++;
 //         }
-//         //for third reverse triangle
+//         //f5rom third reverse triangle
 //         int startt = row;
 //         for(int col=0; col<row;col++){
 //             cout<<startt;
@@ -44,4 +44,4 @@ int main()
 //         }
 //         cout << endl;
 //     }
-//}
+// }
