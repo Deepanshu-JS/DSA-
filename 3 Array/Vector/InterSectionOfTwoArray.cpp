@@ -12,7 +12,7 @@ int main()
 
     for (int i = 0; i < arr.size(); i++)
     {
-        int element = arr[i];
+        int element = arr[i];   // element have one element only jiske liye loop chal raha fro first array
 
         for (int j = 0; j < brr.size(); j++)
         {

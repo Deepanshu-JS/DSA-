@@ -11,7 +11,7 @@ int main()
 
     while (start <= end)
     {
-        swap(arr[start], arr[end]);
+        swap(arr[start], arr[end]);          //Two Pointer
         start++;
         end--;
     }
