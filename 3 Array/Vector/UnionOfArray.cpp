@@ -4,10 +4,10 @@ using namespace std;
 
 int main()
 {
-    int arr[] = {1, 2, 3, 4};
-    int sizea = 4;
-    int brr[] = {5, 6, 7, 8};
-    int sizeb = 4;
+    int arr[] = {1, 2, 3, 4,4};
+    int sizea = 5;
+    int brr[] = {5, 6, 7, 8,8};
+    int sizeb = 5;
 
     vector<int> ans;
 
@@ -22,5 +22,6 @@ int main()
     for (int i = 0; i < ans.size(); i++)
     {
         cout << ans[i]<<" ";
+        
     }
 }
