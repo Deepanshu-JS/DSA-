@@ -19,6 +19,7 @@ int main()
             i++;
             start++;
         }
+       
         else
         {
             swap(arr[i], arr[end]);

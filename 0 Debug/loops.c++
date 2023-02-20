@@ -1,37 +1,24 @@
-include<iostream>
-    include<vector>
-        include<limits.h> using namespace std;
+#include <iostream>
+using namespace std;
 int main()
 {
-   vector<int> arr{1, 2, 3, 4, 5};
-   vector<int> brr{6, 7, 4, 8, 5};
-   vector<int> ans;
-   for (int i = 0; i < arr.size(); i++)
+
+   int n;
+   cin >> n;
+   for (int row = 0; row < n; row++)
    {
-      for (int j = 0; j < brr.size(); j++)
+      for (int col = 0; col <= row; col++)
       {
-         if (arr[i] == brr[j])
+         if (col == 0 || row == n - 1)
          {
-
-            brr[j] == INT_MIN;
+            cout << col+1;
          }
+         else
+         {
+            cout << " ";
+         }
+         
       }
+      cout<<endl;
    }
-   for (int i = 0; i < arr.size(); i++)
-   {
-
-      ans.push_back(arr[i]);
-   }
-   for (int j = 0; j < brr.size(); j++)
-   {
-      if (brr[j] != INT_MIN)
-      {
-         ans.push_back(brr[j]);
-      }
-   }
-   for (int i = 0; i < ans.size(); i++)
-   {
-      cout << ans[i] << " ";
-   }
-   return 0;
 }
