@@ -1,24 +1,32 @@
-#include <iostream>
-using namespace std;
+#include<iostream>
+using namespace std; 
 int main()
 {
-
-   int n;
-   cin >> n;
-   for (int row = 0; row < n; row++)
-   {
-      for (int col = 0; col <= row; col++)
-      {
-         if (col == 0 || row == n - 1)
-         {
-            cout << col+1;
-         }
-         else
-         {
-            cout << " ";
-         }
-         
-      }
-      cout<<endl;
-   }
+    /// Hollow Full Pyramid
+    int n;
+    cin>>n;
+    for(int rows=0;rows<n;rows++)
+    {
+        // For Spaces
+        for (int cols = 0; cols < n-rows-1; cols++)
+        {
+            cout<<" ";
+        }
+        // For Stars
+        for (int cols = 0; cols < rows+1; cols++)
+        {
+            if(rows==n-1||cols==0)
+            {
+                cout<<"* ";
+            }
+            else
+            {
+                cout<<"  ";
+            }
+            
+        }
+        cout<<"*  ";
+        cout<<endl;
+    }
+    return 0; 
 }
