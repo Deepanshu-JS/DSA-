@@ -27,7 +27,7 @@ int main()
             }
             else
             {
-                swap(arr[m], arr[h]);
+                swap(arr[h], arr[m]);
 
                 h--;
             }
