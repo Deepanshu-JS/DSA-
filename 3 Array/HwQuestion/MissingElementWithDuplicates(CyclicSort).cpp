@@ -9,17 +9,17 @@ void Dutch(vector<int> arr)
 {
     int i = 0;
     int n = arr.size();
-    while (i < n)
-    {
-        int index = arr[i] - 1;
-        if (arr[i] != arr[index])
-        {
-            swap(arr[i], arr[index]);
-        }
-        else
-        {
-            i++;
-        }
+    while (i < n)                        //
+    {                                    //
+        int index = arr[i] - 1;         //
+        if (arr[i] != arr[index])       // 
+        {                                ////////////////> Cyclic sort
+            swap(arr[i], arr[index]);    //
+        }                               //
+        else                            //
+        {                              //
+            i++;                       //
+        }                               //
     }
     for (i = 0; i < n; i++)
     {
