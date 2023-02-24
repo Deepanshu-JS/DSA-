@@ -2,7 +2,8 @@
     "files.associations": {
         "iostream": "cpp",
         "ostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "initializer_list": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
