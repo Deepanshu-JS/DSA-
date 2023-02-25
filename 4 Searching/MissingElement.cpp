@@ -2,24 +2,29 @@
 #include <vector>
 using namespace std;
 
-void MissingElement(vector<int> arr)
+int  MissingElement(vector<int> arr)
 {
-    int i = 0;
-    int n = arr.size();
-    for (i = 0; i < n; i++)
-    {
-        if (arr[i] != i + 1)
-        {
-            cout << i + 1<<" ";
-            break;
+    
+    int start=0;
+    int end=arr.size()-1;
+    int mid = start + (end - start) / 2;
+
+    while(start+1 != end){
+        if(arr[mid]==mid+1){
+            start = mid;
+        }else{
+            end = mid;
         }
+         mid = start + (end - start) / 2;
     }
+    
+    return start+2 ;
 }
 
 int main()
 {
 
-    vector<int> arr{1,2,3,4,6,7};
-    MissingElement(arr);
-    return 0;
+    vector<int> arr{1,2,3,4,6,7,8,9};
+    int MisElement=MissingElement(arr);
+    cout<< MisElement;
 }

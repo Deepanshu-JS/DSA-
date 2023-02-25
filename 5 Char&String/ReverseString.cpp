@@ -10,8 +10,8 @@ void reverseStr(string& str)
     while(i<=n){
         //Using the swap method to switch values at each index
         swap(str[i],str[n]);
-        n = n-1;
-        i = i+1;
+        i++;
+        n--;
   }
  
 }
