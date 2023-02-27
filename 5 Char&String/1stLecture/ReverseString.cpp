@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string.h>
 using namespace std;
  
 
-void reverseStr(string& str)
+void reverseStr(char str[])
 {
-    int len = str.length();
+    int len = strlen(str);
     int n = len-1;
     int i = 0;
     while(i<=n){
@@ -18,7 +19,8 @@ void reverseStr(string& str)
  
 int main()
 {
-    string str = "CURVE";
+    char str[100];
+    cin>>str;
     reverseStr(str);
     cout << str;
     return 0;
