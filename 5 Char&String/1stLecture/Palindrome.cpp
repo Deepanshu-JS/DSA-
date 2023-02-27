@@ -24,7 +24,7 @@ int  checkpalindrome(char ch[])
 
 int main()
 {
-    char ch[100] = "racecarq";
+    char ch[100] = "reter";
    
     cout <<  checkpalindrome(ch)<< " ";
 }

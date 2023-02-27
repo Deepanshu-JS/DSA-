@@ -13,7 +13,7 @@ int BinarySearch(vector<int> arr, int key, int start, int end)
         int element = arr[mid];
         if (key == element)
         {
-            return arr[mid];
+            return mid;
         }
 
         if (key < element)
@@ -39,11 +39,11 @@ int PivotElement(vector<int> arr)
     int end = arr.size() - 1;
     int mid = start + (end - start) / 2;
 
-    while (start <= end)
+    while (start < end)      // <start <=end >if only one element
     {
         if (mid + 1 < arr.size() && arr[mid] > arr[mid + 1])
         {
-            return arr[mid];
+            return mid;
         }
 
         if (mid - 1 >= 0 && arr[mid - 1] > arr[mid])
@@ -56,15 +56,15 @@ int PivotElement(vector<int> arr)
         }
         else
         {
-            start = mid + 1;
+            start = mid ;    // <mid-1>if only one element
         }
         mid = start + (end - start) / 2;
     }
 
-    return -1;
+    return start;    // <-1> if only one element
 }
 
-int Search(vector<int> arr, int target)
+int Search(vector<int>arr, int target)
 {
     int Pivot = PivotElement(arr);
     if (target >= arr[0] && target <= arr[Pivot])
@@ -90,5 +90,5 @@ int main()
 
     int SortedElement = Search(arr, target);
 
-    cout << SortedElement << " ";
+    cout << "Your Target Index is :"<<" "<<SortedElement << " ";
 }
