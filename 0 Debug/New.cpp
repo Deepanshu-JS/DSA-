@@ -1,26 +1,111 @@
-void transpose_matrix(int arr[3][3]){
-    for (int i = 0; i < 3; i++)
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Binary Search
+int BinarySearch(vector<int> arr, int key, int start, int end)
+{
+
+    int mid = start + (end - start) / 2;
+
+    while (start <= end)
     {
-        for(int j = 0; j < 3; j++)
+        int element = arr[mid];
+        if (key == element)
         {
-            swap(arr[i][j],arr[j][i]);
+            return mid;
         }
-    }
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
+
+        if (key < element)
         {
-            cout<<arr[i][j];
+            end = mid - 1;
         }
-        cout<<endl;
+        else
+        {
+            start = mid + 1;
+        }
+        mid = start + (end - start) / 2;
     }
+
+    return -1;
 }
 
-int main(){
-    int arr[3][3] = 
-    {{1,2,3},
-    {4,5,6},
-    {7,8,9}};
+// Pivot
 
-    transpose_matrix(arr);
+int PivotElement(vector<int> arr)
+{
+
+    int start = 0;
+    int end = arr.size() - 1;
+    int mid = start + (end - start) / 2;
+
+    while (start < end) // <start <=end >if only one element
+    {
+        if (mid + 1 < arr.size() && arr[mid] > arr[mid + 1])
+        {
+            return mid;
+        }
+
+        if (mid - 1 >= 0 && arr[mid - 1] > arr[mid])
+        {
+            return mid - 1;
+        }
+        if (arr[start] > arr[mid])
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            start = mid; // <mid-1>if only one element
+        }
+        mid = start + (end - start) / 2;
+    }
+
+    return start; // <-1> if only one element
 }
+
+int Search(vector<int> arr, int target)
+{
+    int Pivot = PivotElement(arr);
+    if (target >= arr[0] && target <= arr[Pivot])
+    {
+
+        int ans = BinarySearch(arr, target, 0, Pivot);
+        return ans;
+    }
+    if (Pivot+1 < arr.size() && target >= arr[Pivot + 1] && target <= arr[arr.size() - 1])
+    {
+
+        int ans = BinarySearch(arr, target, Pivot + 1, arr.size() - 1);
+        return ans;
+    }
+    return -1;
+    
+}
+
+int main()
+{
+
+    vector<int> arr{4, 5, 6, 7, 0, 1, 2};
+    int target = 2;
+
+    int SortedElement = Search(arr, target);
+
+    cout << "Your Target Index is :"
+         << " " << SortedElement << " ";
+}
+
+// int Pivot = PivotElement(arr);
+//     if (target >= arr[0] && target <= arr[Pivot])
+//     {
+
+//         int ans = BinarySearch(arr, target, 0, Pivot);
+//         return ans;
+//     }
+//     if (Pivot+1 < arr.size() && target >= arr[Pivot + 1] && target <= arr[arr.size() - 1])
+//     {
+
+//         int ans = BinarySearch(arr, target, Pivot + 1, arr.size() - 1);
+//         return ans;
+//     }
+//     return -1;
