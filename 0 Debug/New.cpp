@@ -2,110 +2,75 @@
 #include <vector>
 using namespace std;
 
-// Binary Search
-int BinarySearch(vector<int> arr, int key, int start, int end)
+int findpivot(vector<int> arr)
 {
+    int s = 0;
+    int e = arr.size() - 1;
+    int mid = s + (e - s) / 2;
 
-    int mid = start + (end - start) / 2;
-
-    while (start <= end)
+    while (s < e)
     {
-        int element = arr[mid];
-        if (key == element)
-        {
-            return mid;
-        }
 
-        if (key < element)
-        {
-            end = mid - 1;
-        }
-        else
-        {
-            start = mid + 1;
-        }
-        mid = start + (end - start) / 2;
-    }
-
-    return -1;
-}
-
-// Pivot
-
-int PivotElement(vector<int> arr)
-{
-
-    int start = 0;
-    int end = arr.size() - 1;
-    int mid = start + (end - start) / 2;
-
-    while (start < end) // <start <=end >if only one element
-    {
         if (mid + 1 < arr.size() && arr[mid] > arr[mid + 1])
         {
             return mid;
         }
-
-        if (mid - 1 >= 0 && arr[mid - 1] > arr[mid])
+        else if (mid - 1 >= 0 && arr[mid - 1] > arr[mid])
         {
             return mid - 1;
         }
-        if (arr[start] > arr[mid])
+        else if (arr[mid] > arr[s])
         {
-            end = mid - 1;
+            e = mid - 1;
         }
         else
         {
-            start = mid; // <mid-1>if only one element
+            s = mid;
         }
-        mid = start + (end - start) / 2;
+        mid = s + (e - s) / 2;
     }
-
-    return start; // <-1> if only one element
+    return s;
 }
 
-int Search(vector<int> arr, int target)
+int findinpivot(vector<int> arr, int element, int s, int e)
 {
-    int Pivot = PivotElement(arr);
-    if (target >= arr[0] && target <= arr[Pivot])
+    int mid = s + (e - s) / 2;
+    while (s <= e)
     {
 
-        int ans = BinarySearch(arr, target, 0, Pivot);
-        return ans;
+        if (mid == element)
+        {
+            return mid;
+        }
+        else if (arr[mid] > element)
+        {
+            e = mid - 1;
+        }
+        else
+        {
+            s = mid + 1;
+        }
+        mid = s + (e - s) / 2;
     }
-    if (Pivot+1 < arr.size() && target >= arr[Pivot + 1] && target <= arr[arr.size() - 1])
-    {
+    return s;
+}
+int search(vector<int> &arr, int element)
+{
 
-        int ans = BinarySearch(arr, target, Pivot + 1, arr.size() - 1);
-        return ans;
+    int pivot = findpivot(arr);
+    if (element >= arr[0] && element <= arr[pivot])
+    {
+        int s = 0;
+        int e = pivot;
+        int j = findinpivot(arr, element, s, e);
+        return j;
+    }
+    if (pivot < arr.size() && element >= arr[pivot + 1] && element <= arr[arr.size() - 1])
+    {
+        int s = pivot + 1;
+        int e = arr.size() - 1;
+        int j = findinpivot(arr, element, s, e);
+        return j;
     }
     return -1;
-    
 }
-
-int main()
-{
-
-    vector<int> arr{4, 5, 6, 7, 0, 1, 2};
-    int target = 2;
-
-    int SortedElement = Search(arr, target);
-
-    cout << "Your Target Index is :"
-         << " " << SortedElement << " ";
-}
-
-// int Pivot = PivotElement(arr);
-//     if (target >= arr[0] && target <= arr[Pivot])
-//     {
-
-//         int ans = BinarySearch(arr, target, 0, Pivot);
-//         return ans;
-//     }
-//     if (Pivot+1 < arr.size() && target >= arr[Pivot + 1] && target <= arr[arr.size() - 1])
-//     {
-
-//         int ans = BinarySearch(arr, target, Pivot + 1, arr.size() - 1);
-//         return ans;
-//     }
-//     return -1;
