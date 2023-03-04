@@ -1,66 +1,34 @@
 #include <iostream>
 using namespace std;
 
-int main()
+// Binary Search
+int Binary_Search(int arr[], int size, int x)
 {
-
-    int n;
-    cin >> n;
-    bool isPrime = true;
-    for (int i = 2; i < n; i++)
+    int s = 0, e = size - 1;
+    int m = s + (e - s) / 2;
+    while (s <= e)
     {
-        if (n % i == 0)
+        if (arr[m] == x)
         {
-            isPrime = false;
-            break;
+            return m;
         }
-    }
-        if (isPrime=false)
+        else if (arr[m] < x)
         {
-            cout << "Prime" << endl;
+            s = m + 1;
         }
         else
-        {
-            cout << "Not Prime" << endl;
-        }
-        return 0;
+            e = m - 1;
+        m = s + (e - s) / 2;
+    }
+    return -1;
+}
 
-
-        
-
-    //     int i = 0;
-    // i = i + 1;
-    // cout << i ;
-    //     /*print i \*/
-
-    //     i = i + 1;
-    //     cout << ++i;
-
-
-
-
-    // short i = 2300, j = 4322;
-    // cout << -(i + j);
-
-
-
-
-    // float l, b;
-    // cin>> l;
-    // cin>>b;
-    // int p = 2*(l+b);
-    // cout<<"Perimeter="<< p;
-
-
-
-    // int n;
-    // cin >> n;
-    // for (int i = 0; i < n; ++i)
-    // {
-    //     for (int j = 0; j < n; ++j)
-    //     {
-    //         cout << n;
-    //     }
-    //     cout << endl;
-    // }5.0 6.0
-} 
+int main()
+{
+    int x;
+    cin >> x;
+    int arr[] = {1, 4, 6, 7, 8, 15, 18};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int ans = Binary_Search(arr, size, x);
+    cout << ans;
+}
