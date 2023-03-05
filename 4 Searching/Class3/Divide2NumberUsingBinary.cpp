@@ -10,7 +10,7 @@ int DivideNumber(int dividend, int divisor)
     int mid = start + (end - start) / 2;
     int ans = 0;
     while (start <= end)
-    {
+    {                                                    //mid =11   end =0 to 22
         if (abs(mid * divisor) == abs(dividend))
         {
             return mid;
@@ -19,7 +19,7 @@ int DivideNumber(int dividend, int divisor)
         {
             end = mid - 1;
         }
-        if (abs(mid * divisor) < abs(dividend))     //handling -ive eith abs
+        if (abs(mid * divisor) < abs(dividend)) // handling -ive eith abs
         {
             ans = mid;
             start = mid + 1;
@@ -28,8 +28,9 @@ int DivideNumber(int dividend, int divisor)
         mid = start + (end - start) / 2;
     }
     if ((divisor < 0 && dividend < 0) || (divisor > 0 && dividend > 0))
-    return ans;
-    else{
+        return ans;
+    else
+    {
         return -ans;
     }
 }
