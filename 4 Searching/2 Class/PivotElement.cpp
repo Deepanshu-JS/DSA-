@@ -11,6 +11,10 @@ int PivotElement(vector<int> arr)
 
     while (start <= end)
     {
+         if (start == end)
+        {
+            return start;  //single element
+        }
         if (mid + 1 < arr.size() && arr[mid] > arr[mid + 1])
         {
             return arr[mid];
