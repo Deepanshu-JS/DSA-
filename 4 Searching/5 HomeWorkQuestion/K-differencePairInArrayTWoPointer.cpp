@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-int findPair(vector<int> arr, int k)
+set<pair<int, int>> findPair(vector<int> arr, int k)
 {
     sort(arr.begin(), arr.end());
     set<pair<int, int>> ans;
@@ -26,14 +26,11 @@ int findPair(vector<int> arr, int k)
             i++;
         }
         if (i == j)
-        { // ek index par
+        {                               // ek index par
             j++;
         }
     }
-    for (auto i : ans)
-    {
-        cout << i << endl;
-    }
+   return ans;
 }
 
 int main()
@@ -41,10 +38,11 @@ int main()
     vector<int> arr{3, 1, 4, 1, 5};
     int k = 2;
 
-    findPair(arr, k);
-    // vector<int> PrintPair = findPair(arr, k);
-    // for (int i = 0; i < PrintPair.size(); i++)
-    // {
-    //     cout << PrintPair;
-    // }
+    set<pair<int, int>> printPair = findPair(arr, k);
+     for (auto i : printPair)
+    {
+        cout << i.first <<" ";
+        cout << i.second << endl;
+    }
+    
 }
