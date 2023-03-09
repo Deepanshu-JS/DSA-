@@ -2,6 +2,11 @@
 #include <vector>
 using namespace std;
 
+int findPages(vector<int>arr,int n , int m){
+    
+}
+
+
 
 int main(){
     vector<int>arr{12,34,67,90}
