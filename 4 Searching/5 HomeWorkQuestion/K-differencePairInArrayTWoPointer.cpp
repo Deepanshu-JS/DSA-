@@ -26,11 +26,11 @@ set<pair<int, int>> findPair(vector<int> arr, int k)
             i++;
         }
         if (i == j)
-        {                               // ek index par
+        { // ek index par
             j++;
         }
     }
-   return ans;
+    return ans;
 }
 
 int main()
@@ -39,10 +39,10 @@ int main()
     int k = 2;
 
     set<pair<int, int>> printPair = findPair(arr, k);
-     for (auto i : printPair)
+    
+    for (auto i : printPair)
     {
-        cout << i.first <<" ";
+        cout << i.first << " ";
         cout << i.second << endl;
     }
-    
 }
