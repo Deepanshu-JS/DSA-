@@ -3,7 +3,7 @@
 using namespace std;
 
 int findPages(vector<int>arr,int n , int m){
-    
+    int n =
 }
 
 
