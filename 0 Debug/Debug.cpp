@@ -1,83 +1,78 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
-
-bool binarySearch(vector<int> &nums, int target, int s, int e)
+int lastocc(int arr[], int size, int target)
 {
-    int mid = s + (e - s) / 2;
-    while (s <= e)
+    int start = 0;
+    int end = size - 1;
+    int mid = start + (end - start) / 2;
+    int ans = -1;
+    while (start <= end)
     {
-        if (nums[mid] == target)
+        if (target == arr[mid])
         {
-            return mid;
+            ans = mid;
+            start = mid+1;   // ye chage hya
         }
-        if (nums[mid] > target)
-        {
-            e = mid - 1;
-        }
-        else
-        {
-            s = mid + 1;
-        }
-        mid = s + (e - s) / 2;
-    }
-    return -1;
-}
-int findPivot(vector<int> &nums)
-{
-    int s = 0;
-    int e = nums.size() - 1;
-    int mid = s + (e - s) / 2;
 
-    while (s < e)
-    {
-        if (mid + 1 < nums.size() && nums[mid] > nums[mid + 1])
+        else if (target < arr[mid])
         {
-            return mid;
+            end = mid - 1;
         }
-        if (mid - 1 >= 0 && nums[mid - 1] > nums[mid])
+        else if (target > arr[mid])
         {
-            return mid - 1;
+            start = mid + 1;
         }
-        if (nums[s] >= nums[mid])
-        {
-            e = mid - 1;
-        }
-        else
-        {
-            s = mid ;
-        }
-        mid = s + (e - s) / 2;
+        mid = start + (end - start) / 2;
     }
-    return s;
+
+    return ans;
 }
 
-bool Search(vector<int> &nums, int target)
+int firstocc(int arr[], int size, int target)
 {
-    // int s=0;
-    // int e=nums.size()-1;
-    int pivot = findPivot(nums);
-    if (target >= nums[0] && target <= nums[pivot])
+    int start = 0;
+    int end = size - 1;
+    int mid = start + (end - start) / 2;
+    int ans = -1;
+    while (start <= end)
     {
-        bool ans = binarySearch(nums, target, 0, pivot);
-        return ans;
+        if (target == arr[mid])
+        {
+            ans = mid;
+            end = mid - 1;
+        }
+
+        else if (target < arr[mid])
+        {
+            end = mid - 1;
+        }
+        else if (target > arr[mid])
+        {
+            start = mid + 1;
+        }
+        mid = start + (end - start) / 2;
     }
-    if (pivot+1<nums.size()&& target >= nums[pivot + 1] && target <= nums[nums.size() - 1])
-    {
-        bool ans = binarySearch(nums, target, pivot + 1, nums.size() - 1);
-        return ans;
-    }
-    return false;
+
+    return ans;
+}
+
+int totalocc(int arr[], int size, int target)
+{
+    int ans = -1;
+    ans = (lastocc(arr, size, target) - firstocc(arr, size, target) + 1);
+    return ans;
 }
 
 int main()
 {
+    int arr[] = {1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 7, 9};
+    int size = 20;
+    int target = 8;
+    int answer = totalocc(arr, size, target);
 
-    vector<int> arr{4, 5, 6, 7, 0, 1, 2};
-    int target = 2;
+    cout << answer;
 
-    int SortedElement = Search(arr, target);
-
-    cout << "Your Target Index is :"
-         << " " << arr[SortedElement] << " ";
+    return 0;
 }

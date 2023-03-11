@@ -8,7 +8,7 @@ bool ispossible(int arr[], int n int m, int mid)
     int c = 1;
     for (int i = 0; i < n; i++)
     {
-        if (arr[i] > sol)
+        if (arr[i] > mid)
         {
             return false
         }
@@ -18,7 +18,7 @@ bool ispossible(int arr[], int n int m, int mid)
             pagesum = a[i];
             if (c > m)
             {
-                return mid;
+                return false;
             }
         }else{
             pagesum+=arr[i];
