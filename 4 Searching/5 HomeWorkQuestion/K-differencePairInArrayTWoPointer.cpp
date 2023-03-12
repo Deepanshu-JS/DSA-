@@ -19,11 +19,11 @@ set<pair<int, int>> findPair(vector<int> arr, int k)
         }
         else if (difference > k)
         {
-            j++;
+            i++;
         }
         else
         {
-            i++;
+            j++;
         }
         if (i == j)
         { // ek index par

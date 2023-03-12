@@ -44,11 +44,12 @@ int findPages(vector<int> arr, int arrsize, int StudentNo)
         end += arr[j];
     }
     int ans = -1;
-
-    int mid = start + (end - start) / 2;
+    
+    
 
     while (start <= end)
     {
+        int mid = start + (end - start) / 2;
         if (ispossible(arr, arrsize, StudentNo, mid))
         {
             ans = mid;
@@ -58,6 +59,7 @@ int findPages(vector<int> arr, int arrsize, int StudentNo)
         {
             start = mid + 1;
         }
+        
     }
     return ans;
 }
