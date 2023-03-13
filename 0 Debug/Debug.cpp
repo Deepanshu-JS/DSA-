@@ -2,77 +2,31 @@
 #include <vector>
 
 using namespace std;
-int lastocc(int arr[], int size, int target)
+
+int peakindex(vector<int> arr)
 {
     int start = 0;
-    int end = size - 1;
+    int end = arr.size() - 1;
     int mid = start + (end - start) / 2;
-    int ans = -1;
-    while (start <= end)
+    while (start < end)
     {
-        if (target == arr[mid])
-        {
-            ans = mid;
-            start = mid+1;   // ye chage hya
-        }
-
-        else if (target < arr[mid])
-        {
-            end = mid - 1;
-        }
-        else if (target > arr[mid])
+        if (arr[mid + 1] > arr[mid])
         {
             start = mid + 1;
         }
-        mid = start + (end - start) / 2;
-    }
-
-    return ans;
-}
-
-int firstocc(int arr[], int size, int target)
-{
-    int start = 0;
-    int end = size - 1;
-    int mid = start + (end - start) / 2;
-    int ans = -1;
-    while (start <= end)
-    {
-        if (target == arr[mid])
+        else
         {
-            ans = mid;
-            end = mid - 1;
-        }
-
-        else if (target < arr[mid])
-        {
-            end = mid - 1;
-        }
-        else if (target > arr[mid])
-        {
-            start = mid + 1;
+            end = mid;
         }
         mid = start + (end - start) / 2;
     }
-
-    return ans;
+    return start;
 }
-
-int totalocc(int arr[], int size, int target)
-{
-    int ans = -1;
-    ans = (lastocc(arr, size, target) - firstocc(arr, size, target) + 1);
-    return ans;
-}
-
 int main()
 {
-    int arr[] = {1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 6, 7, 9};
-    int size = 20;
-    int target = 8;
-    int answer = totalocc(arr, size, target);
-
-    cout << answer;
-
+    vector<int> arr = {0, 10, 5, 3};
+    // int size=4;
+    int ans = peakindex(arr);
+    cout<<ans<<" ";
     return 0;
 }
