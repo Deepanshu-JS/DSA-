@@ -3,7 +3,7 @@
 using namespace std;
 
 vector<int> Dutch(vector<int> arr)
-{
+{                                              //dutch flag algo
     int low = 0;
     int high = arr.size() - 1;
 

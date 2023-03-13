@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-int binary(vector<int> arr, int start, int target)
+int binary(vector<int> &arr, int start, int target)
 {
     int end = arr.size() - 1;
 
@@ -26,16 +26,17 @@ int binary(vector<int> arr, int start, int target)
         }
         mid = start + (end - start) / 2;
     }
+    return -1;
 }
 
-set<pair<int, int>> findpair(vector<int> arr, int target)
+set<pair<int, int>> findpair(vector<int> &arr, int &target)
 {
     sort(arr.begin(), arr.end());
     set<pair<int, int>> ans;
 
     for (int i = 0; i < arr.size(); i++)
     {
-        if (binary(arr, i, arr[i] + target) != 1)
+        if (binary(arr, i + 1, arr[i] + target) != -1)
         {
             ans.insert({arr[i], arr[i] + target});
         }
@@ -45,7 +46,7 @@ set<pair<int, int>> findpair(vector<int> arr, int target)
 
 int main()
 {
-    vector<int> arr{3, 1, 4, 1, 5};
+    vector<int> arr{3, 1, 4, 1, 5, 7};
     int target = 2;
     set<pair<int, int>> printPair = findpair(arr, target);
     for (auto i : printPair)
